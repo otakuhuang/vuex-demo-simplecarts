@@ -17,6 +17,7 @@ const getters = {
             // 找到 rootState 公共的 store 中 products 的 all 是否有 items 中的 id，如果有就直接返回一个新的对象，包含 title、price、quantity 三个字段
             const product = rootState.products.all.find(product => product.id === id);
             return {
+                id: product.id,
                 title: product.title,
                 price: product.price,
                 quantity
@@ -122,6 +123,7 @@ const mutations = {
     // 添加购物车没有的数据
     [CART.PUSH_PRODUCT_TO_CART](state, {id, quantity}) {
         // 根据传来的总共添加的数量，直接赋值给 quantity
+        console.log(id, quantity)
         state.items.push({
             id,
             quantity
